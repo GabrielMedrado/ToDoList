@@ -1,5 +1,6 @@
 import styles from './TaskDone.module.css'
-import checkLogo from '../assets/check.svg'
+import deafultkLogo from '../assets/check.svg'
+import trueLogo from '../assets/true.svg'
 import { Trash } from 'phosphor-react'
 
 
@@ -16,13 +17,20 @@ export function TaskDone() {
             </header>
             <div>
                 <div className={styles.commentTask}>
-                    <img src={checkLogo} alt="Logo do Check" />
+                   <div className={styles.defaultImg}>
+                        <img src={deafultkLogo} alt="Logo default" />
+                   </div>
+                   
+                    <div className={styles.trueImg}>
+                        <img src={trueLogo}/>
+                    </div>
+                    
                     
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur distinctio facilis libero deleniti id quo animi explicabo nostrum repudiandae voluptates.</p>
 
-                        <span className={styles.trash}>
+                        <button>
                             <Trash size={20} />
-                        </span>
+                        </button>
                                             
                 </div>
             </div>
