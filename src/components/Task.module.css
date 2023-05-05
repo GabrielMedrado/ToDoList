@@ -12,29 +12,28 @@
   order: 0;
   flex-grow: 1;
 }
-.newTask input {
+.newTask textarea {
   width: 100%;
   padding: 1rem;
   border-radius: 1rem;
   border: 1px solid var(--gray-700);
   background: var(--gray-500);
   color: white;
+  resize: none;
 }
 
-.newTask input::placeholder {
+.newTask textarea::placeholder {
   color: var(--gray-300);
 }
 
-.newTask input:focus {
+.newTask textarea:focus {
   border-color: var(--purple);
   outline: none;
 }
 
 .newTask textarea {
   width: 100%;
-  height: 100%;
   padding: 1rem;
-  box-sizing: border-box;
 }
 
 .newTask button {
