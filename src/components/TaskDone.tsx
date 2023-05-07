@@ -34,12 +34,10 @@ export function TaskDone({content, onDeleteTask}: TaskDoneProps) {
         <div className={styles.taskDone}>
             <header>
                 <div className={styles.created}>
-                    <p>Tarefas criadas <span>{countTasks}</span> </p>
-                     
-
+                    <p> Tarefas criadas <span>{countTasks}</span> </p>
                 </div>
                 <div className={styles.conclued}>
-                    <p>Concluídas  <span>{countConcluedTask}</span> </p>
+                    <p> Concluídas <span>{countConcluedTask}</span> </p>
                 </div>
             </header>
 
