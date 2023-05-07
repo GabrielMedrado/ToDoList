@@ -9,15 +9,14 @@ export function App() {
   return (
     <div>
       <Header />
-
-      <main className={styles.wrapper}>
-        <div>
-          <Task />
-        </div>
-        <div>
-          <TaskDone />
-        </div>
-      </main>
+        <main className={styles.wrapper}>
+          <div>
+            <Task />
+          </div>
+          <div>
+            <TaskDone />
+          </div>
+        </main>
     </div>
   )
 }
