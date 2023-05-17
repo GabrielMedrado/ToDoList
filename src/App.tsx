@@ -10,12 +10,7 @@ export function App() {
     <div>
       <Header />
         <main className={styles.wrapper}>
-          <div>
             <Task />
-          </div>
-          <div>
-            <TaskDone />
-          </div>
         </main>
     </div>
   )

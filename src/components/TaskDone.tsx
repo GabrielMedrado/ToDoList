@@ -3,55 +3,61 @@ import deafultkLogo from '../assets/check.svg'
 import trueLogo from '../assets/true.svg'
 import { Trash } from 'phosphor-react'
 import { useState } from 'react';
-
 interface TaskDoneProps {
     content: string;
-    onDeleteTask: (task: string) => void
+    onDeleteTask: (task: string, checked: boolean) => void
+    onConcluedTask: (check: boolean) => void
 }
 
-export function TaskDone({content, onDeleteTask}: TaskDoneProps) {
-    const [countTasks, setCountTasks] = useState(0)
-    const [countConcluedTask, setConcluedTask] = useState(0)
+export function TaskDone({content, onDeleteTask, onConcluedTask}: TaskDoneProps) {
+    const [checked, setChecked] = useState(false)
 
     function handleDeleteTask() {
-        onDeleteTask(content);
+        onDeleteTask(content, checked);
     }
-
-    function countTask() {
-        setCountTasks((state) => {
-            return state + 1
-        });
+    
+    function handleConcluedTask() {
+        setChecked(!checked)
+        onConcluedTask(!checked)  
     }
-
-    function countConcluedTasks() {
-        setConcluedTask((state) => {
-            return state + 1
-        });
-    }
-
 
     return (
         <div className={styles.taskDone}>
-            <header>
-                <div className={styles.created}>
-                    <p> Tarefas criadas <span>{countTasks}</span> </p>
-                </div>
-                <div className={styles.conclued}>
-                    <p> Concluídas <span>{countConcluedTask}</span> </p>
-                </div>
-            </header>
-
-            <div>
+            <div>              
                 <div className={styles.commentTask}>
-                   <div 
-                        className={styles.defaultImg}>
-                            <img src={deafultkLogo} alt='Logo deafult' />
-                   </div>              
-                    <div 
-                        className={styles.trueImg}>
-                            <img src={trueLogo} alt='Logo On'/>
-                    </div>        
-                        <p>{content}</p>
+                    {
+                        checked ? 
+                        <div 
+                        className={styles.divImg}
+                        id="divImg" 
+                        onClick={handleConcluedTask}
+                         >
+                            <img 
+                                src={trueLogo} 
+                                alt='Logo On'/>
+                    </div> : ( <>
+                            <div
+                                className={styles.defaultImg} >
+                                    <img src={deafultkLogo} alt='Logo deafult' />
+                           </div>              
+                            <div
+                                id="divImg" 
+                                onClick={handleConcluedTask}
+                                className={styles.trueImg} >
+                                    <img 
+                                        src={trueLogo} 
+                                        alt='Logo On'/>
+                            </div></>)
+                    }
+                   
+
+                    <div > 
+                        {
+                            checked ?
+                                 <p className={styles.inline}>{content}</p> :
+                                 <p>{content}</p>
+                        }
+                    </div>
 
                     <button 
                         onClick={handleDeleteTask}
@@ -59,7 +65,7 @@ export function TaskDone({content, onDeleteTask}: TaskDoneProps) {
                             <Trash size={20} />
                     </button>     
                 </div>
-            </div>
+            </div> 
         </div>
     )
 }

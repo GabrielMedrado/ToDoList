@@ -1,52 +1,14 @@
 .taskDone {
-  margin-top: -59rem;
   gap: 1.5rem;
   width: 46rem;
-  height: 17.938rem;
 }
 
 .taskDone + taskDone {
-  2margin-top: 2rem;
-}
-
-.taskDone header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.created p {
-  display: flex;
-  gap: 0.5rem;
-  color: var(--blue);
-
-  font-weight: 700;
-  font-size: 1.188rem;
-}
-
-.created span {
-  padding: 0.125rem 0.5rem;
-  background-color: var(--gray-400);
-  border-radius: 62.438rem;
-  color: var(--gray-200);
-}
-
-.conclued p {
-  color: var(--purple);
-  font-weight: 700;
-  font-size: 1.188rem;
-  gap: 0.5rem;
-}
-
-.conclued span {
-  color: red;
-  padding: 0.125rem 0.5rem;
-  background-color: var(--gray-400);
-  border-radius: 62.438rem;
-  color: var(--gray-200);
+  margin-top: 0.5rem;
 }
 
 .commentTask {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: flex;
   background-color: var(--gray-500);
   border-radius: 0.5rem;
@@ -92,6 +54,7 @@
   line-height: 140%;
   color: white;
   margin-left: 2.3rem;
+  margin-top: 0.5rem;
 }
 
 .commentTask button {
@@ -104,4 +67,16 @@
 
 .commentTask button:hover {
   color: var(--danger);
+}
+
+.divImg {
+  display: flex;
+  position: absolute;
+  margin-top: 0.6rem;
+  margin-left: 0.2rem;
+}
+
+.inline {
+  text-decoration: line-through;
+  opacity: 60%;
 }

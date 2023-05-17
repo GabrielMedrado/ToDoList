@@ -6,8 +6,9 @@ import { TaskDone } from './TaskDone';
 
 export function Task() {
 
-    const [taskBox, setTask] = useState(['']);
-    const [newTask, setNewTask] = useState('');
+    const [taskBox, setTask] = useState<string[]>([]);
+    const [newTask, setNewTask] = useState("");
+    const [concluido, setConcluido] = useState(0)
 
     const isNewTaskEmpty = taskBox.length === 0;
 
@@ -15,7 +16,7 @@ export function Task() {
     function handleCreateNewTask(event: FormEvent) {
         event.preventDefault()
         
-        setTask([...taskBox, newTask]); 
+        setTask((prevState) => [...prevState, newTask]); 
         setNewTask('')
     }
 
@@ -28,17 +29,31 @@ export function Task() {
         event.target.setCustomValidity('Esse campo é obrigatório');
     }
 
-    function deleteTask(taskToDelete: string) {
+    function deleteTask(taskToDelete: string, checked:boolean) {
+       
         const taskWithoutDeleteOne = taskBox.filter(taskBox => {
             return taskBox !== taskToDelete
         })
 
         setTask(taskWithoutDeleteOne)
+        if(concluido === 0 && checked === false){
+            return
+        } else{
+            setConcluido((prevState) => prevState - 1)
+        }
     }
-    
-     
+
+    function concluedTask(check:boolean){
+             if(check){
+                 setConcluido((prevState) => prevState + 1)
+                 }else{
+                     setConcluido((prevState) => prevState - 1)
+                 }
+    }
+        
     return (
         <article>
+            <div>
             <form 
         className={styles.newTask} 
         onSubmit={handleCreateNewTask} >
@@ -53,24 +68,39 @@ export function Task() {
             />
 
             <button 
-                disabled={isNewTaskEmpty}
                 type="submit">
                     Criar
                     <PlusCircle  />
             </button>
             </form>
+            </div>
 
             <div className={styles.taskValue}>
-                {taskBox.map(taskValue => {
-                    return (
-                        <TaskDone 
-                            key={taskValue}
-                            content={taskValue}
-                            onDeleteTask={deleteTask}
-                        />
-                    )
-                })}
+
+            <header>
+                <div className={styles.created}>
+                    <p> Tarefas criadas <span>{taskBox.length}</span> </p>
+                </div>
+                <div className={styles.conclued}>
+                    <p> Concluídas <span>{concluido}</span> </p>
+                </div>
+            </header>
+    
+                <div>
+        {
+      taskBox.map((task) => {
+        return <TaskDone 
+            key={task}
+            content={task}
+            onDeleteTask={deleteTask}
+            onConcluedTask={concluedTask}
+        />
+    })
+    }
+                </div>                 
             </div>
+            
+
 
         </article>
     )
