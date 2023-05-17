@@ -83,7 +83,7 @@ export function Task() {
                     <p> Tarefas criadas <span>{taskBox.length}</span> </p>
                 </div>
                 <div className={styles.conclued}>
-                    <p> Concluídas <span>{concluido}</span> </p>
+                    <p> Concluídas <span>{ `${concluido}` + " " + "de"+ " " + `${taskBox.length}` }  </span> </p>
                 </div>
             </header>
     
