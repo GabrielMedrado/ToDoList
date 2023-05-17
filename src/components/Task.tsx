@@ -2,6 +2,7 @@ import { PlusCircle } from 'phosphor-react'
 import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 import  styles  from './Task.module.css'
 import { TaskDone } from './TaskDone';
+import  clipboard  from '../assets/clipboard.svg' 
 
 
 export function Task() {
@@ -88,6 +89,13 @@ export function Task() {
     
                 <div>
         {
+            isNewTaskEmpty ? 
+            <div className={styles.empty}>
+                <img src={clipboard} alt="Clipboard img of empty content" />
+                <div>
+                    <p>Você ainda não tem tarefas cadastradas <br/> Crie tarefas e organize seus itens a fazer </p>
+                </div>
+            </div> :
       taskBox.map((task) => {
         return <TaskDone 
             key={task}

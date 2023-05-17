@@ -89,3 +89,24 @@
   display: flex;
   justify-content: space-between;
 }
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.empty img {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.empty p {
+  color: var(--gray-300);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 140%;
+}
